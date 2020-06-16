@@ -222,7 +222,7 @@
             var selectSize,
                 selectPrice,
                 selectCover = 0,
-                endPaper = 0,
+                endWork = 0,
                 sum = 0,
                 qty = 1,
                 pageSizes = {
@@ -311,8 +311,8 @@
                 selectPrice = isNumeric(selectPrice) ? selectPrice : 0;
                 qty = isNumeric(qty) ? qty : 1;
                 selectCover = isNumeric(selectCover) ? selectCover : 0;
-                endPaper = isNumeric(endPapers[selectSize]) ? endPapers[selectSize] : 0;
-                sum = selectPrice * qty + selectCover + endPaper;
+                endPaper = isNumeric(endWork[selectSize]) ? endWork[selectSize] : 0;
+                sum = selectPrice * qty + selectCover + endWork;
                 changeTable();
             }
 
@@ -320,7 +320,7 @@
                 $('.page-size').text(selectPrice + ' руб.');
                 $('.qty').text(qty);
                 $('.cover').text(selectCover + ' руб.');
-                $('.endpaper').text(endPaper + ' руб.');
+                $('.endpaper').text(endWork + ' руб.');
                 $('.sum').text(sum + ' руб.');
             }
 
