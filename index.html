@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Калькулятор</title>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+       .wrap{
+            height: 400px;
+            padding: 25px;
+            background: #00E4F6;
+        }
+        }
+        .gradient{
+            height: 150px;
+            width: 50%;
+            margin: 0 auto;
+            border: 10px solid transparent;
+            border-image: linear-gradient(to right, transparent 0%, #ADF2F7 100%);
+            border-image-slice: 1;
+        }
+        .calc{
+            margin-top: 50px;
+        }
+        
+        .table{
+            background-color: #eee;
+        }   
+       
+    </style>
+</head>
+<body>
+    
+<div class="wrap">
+    <div class="gradient">
+        
+    
+<div class="container calc">
+    <div class="row">
+        <div class="col-md-6">
+            <div id="calc">
+                <div class="form-group">
+                    <label for="page-size">Вид услуг</label>
+                    <select id="page-size" class="form-control">
+                        <option selected>Вид услуги</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="qty">Кол-во услуг</label>
+                    <input class="form-control" type="number" size="3" min="1" value="1" id="qty">
+                </div>
+                <div class="form-group">
+                    <label for="cover">Вид работ</label>
+                    <select class="form-control" id="cover">
+                        <option>Вид работ</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Наименование</th>
+                        <th>Цена</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Вид услуг</td>
+                        <td class="page-size">-</td>
+                    </tr>
+                    <tr>
+                        <td>Количество услуг</td>
+                        <td class="qty">-</td>
+                    </tr>
+                    <tr>
+                        <td>Цена услуги</td>
+                        <td class="cover">-</td>
+                    </tr>
+                    <tr>
+                        <td>Цена работы</td>
+                        <td class="endpaper">-</td>
+                    </tr>
+                    <tr>
+                        <td>Итого</td>
+                        <td class="sum">-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<div class=container>
+<h1 data-name="Yellow+">Yellow+</h1>
+<style>
+     .Yellow+ {position: center;
+        display: flex;
+        text-align: center;
+  align-items: center;
+  justify-content: center;
+  background: mediumturquoise;
+  font-family: Roboto Mono;
+  }
+H1 {
+  display: inline-block;
+  position: center;
+  letter-spacing: .05em;
+  font-size: 150px;
+  cursor: pointer;
+  text-shadow: 5px 10px mediumturquoise,
+               -1px 1px mediumturquoise,
+               -1px -1px mediumturquoise,
+               1px -1px mediumturquoise;
+  color: #ADF2F7;
+  transition: all 1s;
+  }
+  H1:before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    right: -0px;
+    bottom: -0px;
+    left: 0;
+    z-index: -1;
+    background: linear-gradient(-45deg,
+      rgba(255, 255, 255, 0) 2px,
+      mediumturquoise 3px,
+      rgba(0, 0, 0, 0) 3px ) repeat;
+    background-size: 4px 4px;
+    }
+  H1:after {
+    content: attr(data-name);
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    z-index: -2;
+    text-shadow: 1px 1px white,
+                 2px 2px white,
+                 3px 3px white,
+                 4px 4px white;
+    color: white;
+    transition: all 1s;
+    }
+  H1:hover {
+    color: lemonchiffon;
+    }
+    H1:hover:before {
+      animation: 3s move_lines infinite linear;
+      }
+    H1:hover:after {
+      color: lemonchiffon;
+      text-shadow: 1px 1px lemonchiffon,
+        2px 2px lemonchiffon,
+        3px 3px lemonchiffon,
+        4px 4px lemonchiffon;
+      }
+
+@keyframes move_lines {
+  100% {
+    background-position: 40px 40px;
+  }
+}
+</style>
+</div>
+   
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+
+            var selectSize,
+                selectPrice,
+                selectCover = 0,
+                endWork = 0,
+                sum = 0,
+                qty = 1,
+                pageSizes = {
+                    "Водоснабжение": {47: "Стандарт", 53: "Улучшеное"},
+                    "ППР": {53: "Стандарт", 57: "Улучшеное"},
+                    "МП": {57: "Стандарт", 65: "Улучшеное"},
+                    "Канализация": {63: "Стандарт", 69: "Улучшеное"},
+                    "Отопление": {76: "Стандарт", 85: "Улучшеное"},
+                    "Электрика": {105: "Стандарт", 117: "Улучшеное"},
+                    "Сантехника": {105: "Стандарт", 117: "Улучшеное"},
+                    "Демонтаж": {212: "Стандарт", 238: "Улучшеное"},
+                },
+                covers = {
+                    "Водоснабжение": {53: "1 услуга", 204: "2 услуга", 355: "3 услуга", 587: "4 услуга"},
+                    "ППР": {57: "1 услуга", 228: "2 услуга", 373: "3 услуга", 667: "4 услуга"},
+                    "МП": {65: "1 услуга", 254: "2 услуга", 506: "3 услуга", 712: "4 услуга", 1288: "5 услуга"},
+                    "Канализация": {69: "1 услуга", 305: "2 услуга", 525: "3 услуга", 800: "4 услуга", 1288: "5 услуга"},
+                    "Отопление": {85: "1 услуга", 424: "2 услуга", 727: "3 услуга", 992: "4 услуга", 1473: "5 услуга"},
+                    "Электрика": {525: "1 услуга", 1051: "2 услуга", 1126: "3 услуга", 1682: "4 услуга"},
+                    "Сантехника": {525: "1 услуга", 1051: "2 услуга", 1126: "3 услуга", 1682: "4 услуга"},
+                    "Демонтаж": {847: "1 услуга", 1660: "2 услуга", 1320: "3 услуга", 2080: "4 услуга"},
+                },
+                endWork = {
+                    "Водоснабжение": 43,
+                    "ППР": 53,
+                    "МП": 57,
+                    "Канализация": 63,
+                    "Отопление": 94,
+                    "Электрика": 124,
+                    "Сантехника": 124,
+                    "Демонтаж": 169,
+                };
+
+            function insertPageSizes(){
+                var html = '',
+                    size,
+                    price;
+                for(size in pageSizes){
+                    for(price in pageSizes[size]){
+                        html += '<option data-size="' + size + '" data-price="' + price + '">' + size + ' - ' + pageSizes[size][price] + ' ' + price + ' руб.</option>';
+                    }
+                }
+                $('#page-size').append(html);
+            }
+
+            function changeSize(){
+                sum = selectCover = 0;
+                qty = 1;
+                $('#qty').val('1');
+
+                selectSize = $('#calc option').filter(':selected').data('size');
+                selectPrice = $('#calc option').filter(':selected').data('price');
+
+                insertCover();
+                recalc();
+            }
+
+            function insertCover(){
+                var html = '<option selected>Вид работ</option>',
+                    price;
+                for(price in covers[selectSize]){
+                    html += '<option data-price="' + price + '">' + covers[selectSize][price] + ' ' + price + ' руб.</option>';
+                }
+                $('#cover').html(html);
+            }
+
+            function changeQty(){
+                qty = $('#qty').val();
+                if(qty < 1){
+                    qty = 1;
+                    $('#qty').val('1');
+                }
+                recalc();
+            }
+
+            function changeCover(){
+                selectCover = $('#cover option').filter(':selected').data('price');
+                recalc();
+            }
+
+            function isNumeric(n) {
+                return !isNaN(parseFloat(n)) && isFinite(n);
+            }
+
+            function recalc(){
+                selectPrice = isNumeric(selectPrice) ? selectPrice : 0;
+                qty = isNumeric(qty) ? qty : 1;
+                selectCover = isNumeric(selectCover) ? selectCover : 0;
+                endWork = isNumeric(endWork[selectSize]) ? endWork[selectSize] : 0;
+                sum = selectPrice * qty + selectCover + endWork;
+                changeTable();
+            }
+
+            function changeTable(){
+                $('.page-size').text(selectPrice + ' руб.');
+                $('.qty').text(qty);
+                $('.cover').text(selectCover + ' руб.');
+                $('.endpaper').text(endWork + ' руб.');
+                $('.sum').text(sum + ' руб.');
+            }
+
+            insertPageSizes();
+
+            $('#page-size').change(function(){
+                changeSize();
+            });
+
+            $('#qty').change(function(){
+                changeQty();
+            });
+
+
+            $('#cover').change(function(){
+                changeCover();
+            });
+
+        });
+    </script>
+</body>
+</html>
